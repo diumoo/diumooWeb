@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h2>
+    Question & Answer
+</h2>
+<br />
+
+<dl>
+{% for qa in qas %}
+<dt>
+{{ qa.question }}
+</dt>    
+<dd>
+{{ qa.answer }}
+</dd>
+{% endfor %}
+</dl>
+<br />
+有新问题？发邮件到
+<a href="mailto:ant.sz@xdlinux.info">这里</a>。
+
+{% endblock %}

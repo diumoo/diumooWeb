@@ -1,0 +1,6 @@
+*.pyc
+*.db
+*.zip
+*.sh
+.DS_Store
+PYSMELLTAGS

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}
+
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+        <style type="text/css">
+            body{background:#eee}
+            .container{width:720px;}
+            .content{background:#fff;border:solid 2px #ccc;padding:20px 20px 100px 20px}
+            .copyright{text-align:right; padding:1em}
+            .version{ font-weight:bold;font-size:14px}
+            .version span{margin:0 2px}
+            li{padding:2px}
+            .twitter{margin:10px 0}
+            .twitter span{text-transform:lowercase}
+            .cates li{width:45%;float:left}
+            .cates h3{clear:both}
+            .cates{overflow:hidden;}
+            .header{color:black;}
+            dt{margin-top:1em;margin-bottom:0.5em}
+            .label a{color:white}
+
+        </style>
+    </head>
+    <body>
+
+        <div class="alert-message info">
+            {% if update_date %}
+            <p style="text-align:center"><strong>LATEST UPATED AT:</strong>
+            {{ update_date|date:"Y-m-d H:i" }}
+            </p>
+            {% endif %}
+        </div>
+        <div class="container">
+            <div class="content">
+                <div class="page-header">
+                    {% block pageheader %}
+
+                    {% endblock %}
+                </div> 
+                <div class="row">
+                    <div class="span4">
+                        {% block side %}
+
+                        {% endblock %}
+                    </div>
+                    <div class="span7">
+                        {% block content %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                Copyright 2011-2012 | ant_sz
+                <br />
+                All right reserved
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-28091466-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+             })();
+
+         </script>
+     </body>
+ </html>

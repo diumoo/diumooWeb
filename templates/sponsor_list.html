@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+{% block content %}
+<h2>贡献者不完全名单
+<small>Thank all of you!</small>
+</h2>
+<p>
+我尽可能地列出来了目前为止所有提供过帮助的人，尽管其中有的Bug反馈或者建议是重复的，有的建议未被采纳，无论如何，感谢你们为diumoo做出的贡献。而还有更多提供了鼓励或者表达了对diumoo喜爱，却没有一个列表来统计，你们同样值得感谢！
+</p>
+<div class="cates">
+{% for cate in sponsor_cates %}
+<h3>{{ cate }}</h3>
+<ul>
+    {% for sponsor in cate.sponsors.all %}
+    <li>
+    {{sponsor}}
+    </li>
+    {% endfor %}
+</ul>
+{% endfor %}
+<h3>没出现在上面？</h3>
+
+<p class="twitter">
+反馈Bug或提供建议，直接在Twitter上Follow
+<span class="label warning">@diumoo</span>
+或者发送邮件到 <a href="mailto:ant.sz@xdlinux.info" >这里</a>
+</p>
+<p>
+被遗漏掉了？赶紧通过以上方式联系我！
+</p>
+</div>
+
+
+
+{% endblock %}

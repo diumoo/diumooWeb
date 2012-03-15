@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block title %}
+{{ app.name }}
+{% if app.subtitle %}
+| {{ app.subtitle }}
+{% endif %}
+{% endblock %}
+{% block pageheader %}
+<h1>
+    <a href="/" class="header" >{{ app.name }}</a>
+    {% if app.subtitle %}
+    <small>{{ app.subtitle }}</small>
+    {% endif %}
+</h1>
+{% endblock %}
+{% block side %}
+<img src="/static/icon.png" alt=""  width="200" height="200"/>
+<br />
+{% if current_version %}
+<p class="version">
+    <h3>LATEST VERSION:</h3>
+    <span class="label">{{ current_version }}</span>
+    <span class="notice label">b{{ current_version.version }}</span>
+    <span class="label">{{ current_version.update.size|filesizeformat }}</span>
+</p>
+<a href="/static/{{ current_version.update }}" class="btn info">
+    下载
+</a>
+<small>
+<a href="/donate/" class="btn" >捐助</a>
+</small>
+{% endif %}
+<br />
+<br />
+<h3>Links:</h3>
+<ul>
+    {% for link in links %}
+    <li>
+    <a href="{{ link.url }}" >{{ link }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+{% block content %}
+<h2>Introduction
+    <small>Something cool about me.</small>
+</h2>
+<p>
+{{ app.intro|safe}}
+</p>
+<h2>Features
+    <small>All you want is here!</small>
+</h2>
+<ol>
+    {% for feature in features %}
+    <li>
+    {{ feature }}
+    {% if feature.new %}
+    <span class="label success">NEW</span>
+    {% endif %}
+    </li>
+    {% endfor %}
+</ol>
+<h2>Notice
+    <small>What you should know</small>
+</h2>
+<ol>
+    {% for notice in notices %}
+    <li>
+    {{ notice }}
+    {% if notice.important %}
+    <span class="label important">IMPORTANT</span>
+    {% endif %}
+    </li>
+    {% endfor %}
+</ol>
+{% if versions %}
+<h2>Update
+    <small>What's new today?</small>
+</h2>
+<ul>
+    {% for version in versions  %}
+    <li>
+    <span class="label">{{version}}</span>
+    <span class="label notice">b{{version.version}}</span>
+    <span class="label">{{ version.published|date:"Y-m-d" }}</span>
+    <span class="label warning">
+        <a href="/static/{{ version.update }}" >
+            下载
+        </a>
+    </span>
+    {{ version.update_note }}
+    </li> 
+    {% endfor %}
+</ul>
+{% endif %}
+{% if screenshots %}
+<h2>ScreenShots</h2>
+<ul>
+{% for screenshot in screenshots %}
+<li>
+<a href="{{screenshot.image}}" >
+    {{ screenshot }}
+</a>
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<h2>Contact 
+    <small>Tell us what do you want!</small>
+</h2>
+<p class="twitter">
+{% include "contact.html" %}
+</p>
+{% endblock %}
